@@ -4,10 +4,10 @@ import {
   Route,
   Routes
 } from "react-router-dom";
-import Home from './components/home/home';
-import About from './components/about/about';
-import Header from "./components/header/header";
-
+import Sales from './components/Sales/Sales';
+import MaterialBills from './components/MaterialBills/MaterialBills';
+import Header from "./components/Header/Header";
+import Home from './components/Home/Home';
 function App() {
   return (
     <Router>
@@ -15,7 +15,8 @@ function App() {
       <Routes>
         <Route path='/' element={ <Home/>} />
         <Route path='/home' element={ <Home/>} />
-        <Route path='/About' element={<About/>}/>
+        <Route path='/sales' element={ <Sales/>} />
+        <Route path='/material-bills' element={<MaterialBills/>}/>
       </Routes>
     </Router>
   );

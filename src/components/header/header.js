@@ -1,10 +1,15 @@
 
 import { useState } from 'react';
-import MenuButton from '../shared/menu-button/menu-button';
-import './header.css';
+import MenuButton from '../Shared/MenuButton/MenuButton';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import { customerMenuLinks, supplierMenuLink } from '../../utilities/constants'
+import './Header.css';
 
 const Header = (props) => {
     const [selectedButton, selectButton] = useState('');
+    const navigateTo = useNavigate();
     const buttonValues = {
         supplier: 'Supplier',
         customer: 'Customer',
@@ -12,9 +17,19 @@ const Header = (props) => {
         billOfMaterials: 'Bill of material'
     }
 
-    const handleButtonClick = (buttonText) => {
-        console.log("handleButtonClick", buttonText);
-        selectButton(buttonText)
+    const navigateToPage = (pageName) => {
+        selectButton(pageName);
+        const { sales, billOfMaterials } = buttonValues;
+        switch (pageName) {
+            case sales:
+                navigateTo('/sales')
+                break;
+            case billOfMaterials:
+                navigateTo('/material-bills')
+                break;
+            default:
+                break;
+        }
     }
     return (
       <header className="header-container">
@@ -22,27 +37,30 @@ const Header = (props) => {
         <div className="menu-container">
             <MenuButton 
                 buttonText={buttonValues.supplier} 
-                onButtonClick={handleButtonClick} 
+                onButtonClick={(buttonText) => selectButton(buttonText)} 
                 showMenu={selectedButton === buttonValues.supplier} 
-                menuComponent={<div>Supplier MENU</div>}/>
+                menu={supplierMenuLink}/>
             
             <MenuButton 
                 buttonText={buttonValues.customer}  
                 showMenu={selectedButton === buttonValues.customer} 
-                onButtonClick={handleButtonClick} 
-                menuComponent={<div>Customer MENU</div>}/>
+                onButtonClick={(buttonText) => selectButton(buttonText)} 
+                menu={customerMenuLinks}/>
 
-            <MenuButton 
-                buttonText={buttonValues.sales}  
-                showMenu={selectedButton === buttonValues.sales} 
-                onButtonClick={handleButtonClick} 
-                menuComponent={<div>Sales MENU</div>}/>
+            <button 
+                onClick={() => navigateToPage(buttonValues.sales)} 
+                className="item show-pointer">
+                    {buttonValues.sales}
+            </button>
             
-            <MenuButton 
-                buttonText={buttonValues.billOfMaterials}  
-                showMenu={selectedButton === buttonValues.billOfMaterials} 
-                onButtonClick={handleButtonClick} 
-                menuComponent={<div>Bill of material MENU</div>}/>
+            <button 
+                onClick={() => navigateToPage(buttonValues.billOfMaterials)} 
+                className="item show-pointer">
+                    {buttonValues.billOfMaterials}
+            </button>
+        </div>
+        <div className='hamburger-menu-container'>
+            <FontAwesomeIcon icon={faBars} />
         </div>
       </header>
     )
