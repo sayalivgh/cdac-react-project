@@ -1,4 +1,8 @@
 
+export const messages = {
+    emailAddressErrorMsg: "Please provide valid email address.",
+    passwordErrorMsg: "Please provide valid Password."
+}
 export const regexPatterns = {
     emailRegex: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 }
