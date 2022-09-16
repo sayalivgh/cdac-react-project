@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MenuButton from '../Shared/MenuButton/MenuButton';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
@@ -31,9 +31,17 @@ const Header = (props) => {
                 break;
         }
     }
+
+    useEffect(() => {
+        const resetMenuSelection = (e) => {
+            const getElement = document.getElementById('popover-positioned-bottom');
+            console.log('check: ', getElement, e.target);
+        }
+        document.addEventListener('mousedown', resetMenuSelection);
+    },[])
     return (
       <header className="header-container">
-        <div className='logo show-pointer'>LOGO</div>
+        <div onClick={() => navigateTo('/')} className='logo show-pointer'>LOGO</div>
         <div className="menu-container">
             <MenuButton 
                 buttonText={buttonValues.supplier} 

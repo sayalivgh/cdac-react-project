@@ -1,3 +1,7 @@
+
+export const regexPatterns = {
+    emailRegex: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+}
 export const customerMenuLinks = [
     {
         name: 'customers',
