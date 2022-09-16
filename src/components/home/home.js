@@ -1,7 +1,7 @@
-
+import './Home.css'
 const Home = (props) => {
   return (
-    <div>home</div>
+    <h1>Home</h1>
   )
 }
 

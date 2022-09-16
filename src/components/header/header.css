@@ -1,10 +1,8 @@
 .header-container{
-    padding: 20px;
+    padding: 12px;
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
     background-color: white;
-    height: 36px;
     align-items: center;
     gap: 30px;
 }
@@ -18,15 +16,31 @@
     flex-wrap: wrap;
     justify-content: center;
     flex: 1;
-    gap: 30px;
 }
 .header-container .menu-container .item{
     background-color: transparent;
-    padding: 12px;
+    padding: 8px;
     border: none;
 }
-.header-container .menu-container .show-button-selection,
-.header-container .menu-container .item:hover{
-    background-color: rgba(64,87,109,.07);
-    color: rgb(29, 113, 141);
+@media screen and (max-width: 800px) {
+    .header-container .menu-container{
+        display: none;
+    }
+    .header-container .hamburger-menu-container{
+        display: block;
+        margin-left: auto
+    }
+}
+@media screen and (min-width: 800px) {
+    .header-container .menu-container{
+        display: flex;
+    }
+    .header-container .hamburger-menu-container{
+        display: none;
+    }
+    .header-container .menu-container .show-button-selection,
+    .header-container .menu-container .item:hover{
+        background-color: rgba(64,87,109,.07);
+        color: rgb(29, 113, 141);
+    }  
 }

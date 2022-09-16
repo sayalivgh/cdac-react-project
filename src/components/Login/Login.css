@@ -1,0 +1,22 @@
+.login-form-parent{
+    height: inherit;
+    display: flex;
+}
+
+.login-image-container{
+    display: flex;
+    align-items: center;
+    background-color: aliceblue;
+    width: 50%;
+}
+.login-image-container img{
+    display: block;
+    width: 80%;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 20px;
+    width: 50%;
+}
