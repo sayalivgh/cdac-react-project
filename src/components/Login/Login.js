@@ -4,12 +4,13 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import loginImg from '../../images/login.svg';
 import { useState } from 'react';
-import { regexPatterns } from '../../utilities/constants'
+import { regexPatterns, messages } from '../../utilities/constants'
 const Login = () => {
     const initialInputs = {
         email: '',
         password: ''
     }
+    const { emailAddressErrorMsg, passwordErrorMsg } = messages;
     const [userInputs, setUserinputs] = useState(initialInputs)
     const [isEmailInValid, setIsEmailInValid] = useState(null)
     const [isPasswordInValid, setIsPasswordInValid] = useState(null)
@@ -62,7 +63,7 @@ const Login = () => {
                             onChange={(event) => handleInputChange(event, 'email')}
                             required/>
                         <Form.Control.Feedback type="invalid">
-                            Please provide valid email address.
+                           {emailAddressErrorMsg}
                         </Form.Control.Feedback>
                     </FloatingLabel>
                     <FloatingLabel
@@ -78,11 +79,11 @@ const Login = () => {
                             onChange={(event) => handleInputChange(event, 'password')}
                             required />
                         <Form.Control.Feedback type="invalid">
-                            Please provide valid Password.
+                            {passwordErrorMsg}
                         </Form.Control.Feedback>
                     </FloatingLabel>
                     <Button variant="primary" type="submit">
-                        Submit
+                        Login
                     </Button>    
                     </Form>            
             </div>
